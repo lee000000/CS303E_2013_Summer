@@ -1,0 +1,17 @@
+
+public class test {
+
+	public static void main(String[] args) {
+		
+		int[] outer = {1,2,4,6};
+		int[] inner = {2,4};
+		
+		// boolean result = linearIn (outer, inner) ;
+		// System.out.println(result);
+        boolean result = outer.equals(inner);
+        System.out.println(result);
+	}
+	
+	
+
+}

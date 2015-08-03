@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+
+public class TestFib {
+
+	public static void main(String[] args) {
+		 // Create Scanner object
+	    Scanner sc = new Scanner (System.in);
+
+	    // Prompt user to enter a decimal integer
+	    System.out.print("Please Enter an integer that is less than a million: ");
+	    int num = sc.nextInt();
+	    
+	    for (int elt: fibonacci(num))
+	    {
+	    	System.out.print(elt + " ");
+	    }
+
+	}
+	public static int[] fibonacci (int num)
+	  {
+	    int f0 = 0;
+	    int f1 = 1;
+	    int fn = f0 + f1;
+	    int i = 0;
+	    String fibSeries = "";
+	    
+	    while ( fn <= num )
+	    {
+	      f0 = f1;
+	      f1 = fn;
+	      fn = f0 + f1;
+	      fibSeries = fibSeries+ f1 +" ";
+	      i ++;   
+	    }
+	    
+	    //Return the reversed array
+	    return rev(fibSeries.split("\\s"));
+	  } 
+
+	  //This method reverse any given array of integers
+	 public static int[] rev(String[] series)
+	  {
+		int[] result = new int[series.length];
+	    for ( int i = 0; i < series.length; i++)
+	    {
+	       result [i] = Integer.parseInt(series[series.length - 1 - i]);
+	    }
+	    return result;
+	  }
+
+}

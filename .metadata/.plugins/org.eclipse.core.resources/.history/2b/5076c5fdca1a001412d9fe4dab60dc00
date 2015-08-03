@@ -1,0 +1,82 @@
+
+public class test {
+
+	public static void main(String[] args) {
+		
+		int[] outer = {1,2,3,8,9,3,2,1};
+		int[] inner = {2,4};
+		
+        System.out.println(maxMirror(outer));
+  
+	}
+	
+
+	  
+	public static int maxMirror(int[] nums) {
+		  if ( nums.length == 0 )
+		  {
+		    return 0;
+		  }
+		  
+		  int window = nums.length;
+		  
+		  while (window > 0 )
+		  {
+		    int[] temp = new int[window];
+		    for (int i = 0 ; i < nums.length - window + 1 ; i++)
+		    {
+		      for ( int j = 0; j < window ; j ++ )
+		      {
+		        temp[ j ] = nums [ i + j ];
+		      }
+		      if ( isFound (temp, nums) == true )
+		      {
+		        return window;
+		      }
+		    }
+		    window -- ;
+		  }
+		  return 0;
+		}
+
+		public static boolean isFound (int[] temp , int[] nums )
+		{
+		  int[] revTemp = new int[temp.length];
+		  revTemp = rev(temp);
+		  
+		  int window = revTemp.length;
+		  int count = 0;
+		  
+		  for ( int i = 0 ; i < revTemp.length ; i ++ )
+		  {
+		    for (int j = 0 ; j < nums.length; j ++ )
+		    {
+		      if ( revTemp[i] == nums[j] )
+		      {
+		        count ++;
+		        break;
+		      }
+		    }
+		  }
+		  if (count == revTemp.length)
+		  {
+		    return true;
+		  }
+		  else
+		  {
+		    return false;
+		  }
+		  
+		}
+
+		public static int[] rev(int[] temp)
+		{
+		  int[] revTemp = new int[temp.length];
+		  for (int i = 0 ; i < temp.length; i ++ )
+		  {
+		    revTemp [ i ] = temp [ temp.length - i - 1];
+		  }
+		  return revTemp;
+		}
+
+}

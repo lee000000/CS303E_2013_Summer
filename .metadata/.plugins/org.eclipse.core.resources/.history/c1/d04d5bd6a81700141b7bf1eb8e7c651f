@@ -1,0 +1,89 @@
+import java.util.*;
+
+public class FibonacciBase
+{
+
+  public static void main (String[] args)
+  {
+    // Create Scanner object
+    Scanner sc = new Scanner (System.in);
+
+    // Prompt user to enter a decimal integer
+    System.out.print("Please Enter an integer that is less than a million: ");
+    int num = sc.nextInt();
+    
+    // Test if the input is a decimal integer 
+    // If not print error message and exit program
+    if ( num > 1000000 )
+    {
+      System.out.print("The number is invalid.");
+      System.exit(1);
+    }
+    
+    // Get the String representation of the decimal number
+    String fibBase = convert(num);
+   
+    // Print out the result
+    System.out.println();
+    System.out.printf("%d = %s (fib)", num, fibBase);
+  }
+
+  //Convert from decimal number to binary string in Fib base
+  public static String convert (int num)
+  {
+    //Create a list of Fibonacci series with the greatest Fibonacci number less than the given number
+    int[]  fibSeries = fibonacci(num);
+    int sum = fibSeries[0];
+    String fibBase = "10";
+
+    //Find the fibonacci numbers that add up to num
+    for (int i = 2; i < fibSeries.length - 1 ;  )
+    {
+      sum = sum + fibSeries [i - 1] ;
+      if ( sum <= num )
+      {
+        fibBase = fibBase + "1";
+        i ++;
+      }
+      else
+      {
+        fibBase = fibBase + "0";
+        i ++;
+      }
+    }
+    return fibBase;    
+  }
+
+  //This method will create an array of fibonacci series less than a given integer
+  public static int[] fibonacci (int num)
+  {
+    int f0 = 0;
+    int f1 = 1;
+    int fn = f0 + f1;
+    int i = 0;
+    String fibSeries = "";
+    
+    while ( fn <= num )
+    {
+      f0 = f1;
+      f1 = fn;
+      fn = f0 + f1;
+      fibSeries = f1 +" ";
+      i ++;   
+    }
+    
+    //Return the reversed array
+    return rev(fibSeries.split("\\s"));
+  }
+
+  //This method reverse any given array of integers
+  public static int[] rev(String[] series)
+  {
+	int[] result = new int[series.length];
+    for ( int i = 0; i < series.length; i++)
+    {
+       result [i] = Integer.parseInt(series[series.length - 1 - i]);
+    }
+    return result;
+  }
+}

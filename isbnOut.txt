@@ -1,0 +1,9 @@
+a  Invalid
+abc  Invalid
+1237890322390532042  Invalid
+abduio24x293  Invalid
+019-923-3241  Valid
+818-851-703X  Invalid
+5703781188  Invalid
+031-X287085-  Invalid
+00-7141858-X  Valid
